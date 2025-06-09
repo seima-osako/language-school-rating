@@ -1,0 +1,5 @@
+name = "rating-dev"
+compatibility_date = "2025-06-09" # プロジェクトの作成日やデプロイ日に合わせて調整してください
+
+[site]
+bucket = "./dist"
