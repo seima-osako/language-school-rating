@@ -1,5 +1,3 @@
 name = "rating-dev"
-compatibility_date = "2025-06-09" # プロジェクトの作成日やデプロイ日に合わせて調整してください
-
-[site]
-bucket = "./dist"
+compatibility_date = "2025-06-10"
+pages_build_output_dir = "dist"
