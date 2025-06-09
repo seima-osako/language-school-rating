@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npx wrangler pages deploy dist"
+    "deploy": "npx wrangler pages deploy dist --project-name=rating-dev"
   },
   "dependencies": {
     "framer-motion": "^12.16.0",
