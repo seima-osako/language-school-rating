@@ -98,18 +98,18 @@ export default function App() {
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b border-slate-600">
-                  <th className="pb-4 text-indigo-300 font-semibold text-lg">スクール名</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[100px]">スクール名</th>
                   <th
-                    className="pb-4 text-indigo-300 font-semibold text-lg cursor-pointer select-none hover:text-indigo-200 transition-colors"
+                    className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg cursor-pointer select-none hover:text-indigo-200 transition-colors min-w-[80px]"
                     onClick={() => setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"))}
                   >
                     総合Rating
                     <span className="ml-2 text-sm">{sortOrder === "asc" ? "▲" : "▼"}</span>
                   </th>
-                  <th className="pb-4 text-indigo-300 font-semibold text-lg">提供形式</th>
-                  <th className="pb-4 text-indigo-300 font-semibold text-lg">住所</th>
-                  <th className="pb-4 text-indigo-300 font-semibold text-lg">URL</th>
-                  <th className="pb-4 text-indigo-300 font-semibold text-lg">詳細</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[80px]">提供形式</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">住所</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">URL</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[80px]">詳細</th>
                 </tr>
               </thead>
               <tbody className="space-y-2">
@@ -121,35 +121,35 @@ export default function App() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <td className="py-6 pr-6">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 bg-indigo-600/20 rounded-lg group-hover:bg-indigo-600/40 transition-colors">
-                          <School className="w-5 h-5 text-indigo-400" />
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[100px]">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="p-1 sm:p-2 bg-indigo-600/20 rounded-lg group-hover:bg-indigo-600/40 transition-colors">
+                          <School className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400" />
                         </div>
-                        <span className="font-semibold text-lg">{school.name}</span>
+                        <span className="font-semibold text-xs sm:text-lg">{school.name}</span>
                       </div>
                     </td>
-                    <td className="py-6 pr-6">
-                      <div className="flex items-center gap-2">
-                        <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                        <span className="text-2xl font-bold text-yellow-400">{school.rating}</span>
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[80px]">
+                      <div className="flex items-center gap-1 sm:gap-2">
+                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
+                        <span className="text-lg sm:text-2xl font-bold text-yellow-400">{school.rating}</span>
                       </div>
                     </td>
-                    <td className="py-6 pr-6">{school.format}</td>
-                    <td className="py-6 pr-6">{school.address}</td>
-                    <td className="py-6 pr-6">
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[80px]">{school.format}</td>
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">{school.address}</td>
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">
                       <a
                         href={school.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors"
+                        className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors break-all"
                       >
                         {school.url.replace('https://', '')}
                       </a>
                     </td>
-                    <td className="py-6">
+                    <td className="py-2 sm:py-6 text-xs sm:text-base min-w-[80px]">
                       <motion.button
-                        className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                         onClick={() => setSelected(school)}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
