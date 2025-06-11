@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { schoolsData, dummyReviewsData } from "./data";
+import { schoolsData } from "./data";
 import type { SchoolType } from "./data";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, School, X, HelpCircle } from "lucide-react";
