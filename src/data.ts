@@ -1,80 +1,102 @@
-export type SchoolType = {
-    id: number;
+export interface SchoolType {
+    id: string;
     name: string;
     rating: string;
-    url: string;
-    format: "対面" | "オンライン" | "ハイブリッド";
+    format: string;
     address: string;
+    url: string;
     scores: {
-        support: number;
         price: number;
-        teacher: number;
         curriculum: number;
+        teacher: number;
+        support: number;
     };
-};
+    reviews: {
+        price: string[];
+        curriculum: string[];
+        teacher: string[];
+        support: string[];
+    };
+    referenceUrls: {
+        price: string[];
+        curriculum: string[];
+        teacher: string[];
+        support: string[];
+    };
+}
+
+// レーティング計算関数
+export function calculateRating(scores: { price: number; curriculum: number; teacher: number; support: number }): string {
+    const average = (scores.price + scores.curriculum + scores.teacher + scores.support) / 4;
+    if (average >= 4.5) return "A+";
+    if (average >= 4.0) return "A";
+    if (average >= 3.0) return "B";
+    return "C";
+}
 
 export const schoolsData: SchoolType[] = [
     {
-        id: 1,
-        name: "Alpha School",
-        rating: "A+",
-        url: "https://alpha.example.com",
-        format: "ハイブリッド",
-        address: "東京都新宿区西新宿2-8-1",
-        scores: {
-            support: 5,
-            price: 4,
-            teacher: 5,
-            curriculum: 4,
-        },
-    },
-    {
-        id: 2,
-        name: "Beta Academy",
-        rating: "B",
-        url: "https://beta.example.com",
-        format: "オンライン",
-        address: "-",
-        scores: {
-            support: 3,
-            price: 5,
-            teacher: 3,
-            curriculum: 3,
-        },
-    },
-    {
-        id: 3,
-        name: "Gamma Institute",
-        rating: "A",
-        url: "https://gamma.example.com",
+        id: "ielts-trainer-pro",
+        name: "IELTS TRAINER PRO",
+        rating: calculateRating({
+            price: 4.571429,
+            curriculum: 4.619048,
+            teacher: 4.590909,
+            support: 4.428571
+        }),
         format: "対面",
-        address: "大阪府大阪市北区梅田1-1-1",
+        address: "東京池袋",
+        url: "https://maps.app.goo.gl/xJTevMaD3exVvn1P6",
         scores: {
-            support: 4,
-            price: 2,
-            teacher: 4,
-            curriculum: 5,
+            price: 4.571429,
+            curriculum: 4.619048,
+            teacher: 4.590909,
+            support: 4.428571
         },
-    },
+        reviews: {
+            price: [
+                "多くの受講者が「コスパが良い」「リーズナブルで続けやすい」と評しており、特に6ヶ月プランや短期集中コースで費用対効果を実感しています。",
+                "一方で「料金が高すぎて続けられない」「費用に見合った価値を感じない」といったネガティブな声も散見されます。"
+            ],
+            curriculum: [
+                "４技能（リーディング・リスニング・ライティング・スピーキング）をバランスよく、しかも実践的に学べる体系的な構成が高く評価されています。",
+                "一方で「市販テキストとあまり変わらない」「コース間で進度や内容にムラがある」との指摘もあり、安定性に不安を感じる方も。"
+            ],
+            teacher: [
+                "「教え方が丁寧で熱心」「弱点を的確にフォローしてくれる」と、講師レベルの高さを実感する声が多数あります。",
+                "ただし「講師によって教え方に差が大きい」「説明が雑で質問をはぐらかされる」といった相性や質のムラを指摘する口コミも。"
+            ],
+            support: [
+                "「質問へのレスポンスが速い」「どんな細かい疑問にも親身に答えてくれる」といった、サポート体制の手厚さを評価する声が目立ちます。",
+                "一方で代講時の引き継ぎ不足や対応の事務的さで「忙しそう」「相性の合わない先生に当たる」といった不満も報告されています。"
+            ]
+        },
+        referenceUrls: {
+            price: [
+                "https://maps.app.goo.gl/LEsHru7UZmVHmYg2A",
+                "https://maps.app.goo.gl/EvGgyYHG9yZ5MVmH8"
+            ],
+            curriculum: [
+                "https://maps.app.goo.gl/raTwhLDdNjSFRMH7A",
+                "https://maps.app.goo.gl/1bJjpaQuGX7J7SNo6"
+            ],
+            teacher: [
+                "https://maps.app.goo.gl/JC4jqFfHZ8dRqLp36",
+                "https://maps.app.goo.gl/1bJjpaQuGX7J7SNo6"
+            ],
+            support: [
+                "https://maps.app.goo.gl/NgGY8gqZA9SWcT1n6",
+                "https://maps.app.goo.gl/1iCBx1JLxAfGF1gp8"
+            ]
+        }
+    }
 ];
 
-export const dummyReviewsData: Record<number, Record<string, string>> = {
-    1: { // Alpha School
-        support: "Alpha校のサポートは迅速で、疑問点をすぐに解消できました。",
-        price: "料金は平均的ですが、内容を考えると妥当です。",
-        teacher: "経験豊富な講師が多く、質の高い授業を受けられました。",
-        curriculum: "Alpha校独自のカリキュラムは実践的で役立ちました。"
-    },
-    2: { // Beta Academy
-        support: "オンラインサポートが充実しており、いつでも質問できました。",
-        price: "Beta校は非常にリーズナブルで、コストパフォーマンスが高いです。",
-        teacher: "フレンドリーな講師が多く、楽しく学べました。",
-        curriculum: "基礎から応用までバランスの取れたカリキュラムでした。"
-    },
-    3: { // Gamma Institute
-        support: "Gamma校の進路相談サポートが手厚かったです。",
-        price: "少し高めですが、その分施設や教材が充実しています。",
-        teacher: "専門分野に特化した講師から深い知識を学べました。",
-        curriculum: "Gamma校の専門性の高いカリキュラムは満足度が高いです。"
+export const dummyReviewsData = {
+    "ielts-trainer-pro": {
+        price: "料金に関する詳細なレビュー...",
+        curriculum: "カリキュラムに関する詳細なレビュー...",
+        teacher: "講師の質に関する詳細なレビュー...",
+        support: "質問対応に関する詳細なレビュー..."
     }
 };

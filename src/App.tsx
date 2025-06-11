@@ -2,7 +2,7 @@ import { useState } from "react";
 import { schoolsData, dummyReviewsData } from "./data";
 import type { SchoolType } from "./data";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, School, X } from "lucide-react";
+import { Star, School, X, HelpCircle } from "lucide-react";
 
 // ratingを比較用数値に変換
 function ratingToScore(rating: string): number {
@@ -13,7 +13,7 @@ function ratingToScore(rating: string): number {
 }
 
 // 円形プログレスバーコンポーネント
-function CircleProgress({ value, max = 100, label }: { value: number; max?: number; label: React.ReactNode }) {
+function CircleProgress({ value, max = 5, label }: { value: number; max?: number; label: React.ReactNode }) {
   const radius = 40;
   const stroke = 8;
   const normalizedRadius = radius - stroke / 2;
@@ -53,7 +53,7 @@ function CircleProgress({ value, max = 100, label }: { value: number; max?: numb
           fontSize="1.2em"
           fill="#fff"
         >
-          {value}
+          {value.toFixed(1)}
         </text>
       </svg>
       <span className="text-xs text-slate-400">{label}</span>
@@ -61,19 +61,26 @@ function CircleProgress({ value, max = 100, label }: { value: number; max?: numb
   );
 }
 
-// データは src/data.ts からインポート
+function getRatingColor(rating: string): string {
+  switch (rating) {
+    case "A+": return "text-green-400";
+    case "A": return "text-blue-400";
+    case "B": return "text-yellow-400";
+    case "C": return "text-red-400";
+    default: return "text-slate-400";
+  }
+}
 
 export default function App() {
   const [selected, setSelected] = useState<SchoolType | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  const [showInfo, setShowInfo] = useState(false);
   const [reviewOpen, setReviewOpen] = useState({
     support: true,
     price: true,
     teacher: true,
     curriculum: true,
   });
-
-  // dummyReviewsData は直接使用せず、selected.id に基づいて取得
 
   const toggleReview = (key: keyof typeof reviewOpen) => {
     setReviewOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -90,8 +97,62 @@ export default function App() {
       <div className="px-4 py-10">
         <h1 className="text-4xl font-bold mb-8 text-center flex items-center justify-center gap-3">
           <School className="w-10 h-10 text-indigo-400" />
-          英語スクール評価システム
+          AI英語スクール診断
+          <button
+            onClick={() => setShowInfo(true)}
+            className="p-2 text-indigo-400 hover:text-indigo-300 transition-colors"
+          >
+            <HelpCircle className="w-6 h-6" />
+          </button>
         </h1>
+
+        {/* 説明ポップアップ */}
+        <AnimatePresence>
+          {showInfo && (
+            <motion.div
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div
+                className="bg-slate-900/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 w-full max-w-2xl relative"
+                initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.8, opacity: 0, y: 50 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              >
+                <button
+                  className="absolute top-4 right-4 p-2 text-slate-400 hover:text-red-400 hover:bg-red-400/10 rounded-full transition-all"
+                  onClick={() => setShowInfo(false)}
+                >
+                  <X className="w-6 h-6" />
+                </button>
+
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-indigo-300 mb-4">AI英語スクール診断とは？</h2>
+                  <div className="text-slate-300 space-y-4 text-left">
+                    <p>
+                      このシステムは、Google Mapsの口コミをAIで分析し、英語スクールの評価を行っています。
+                    </p>
+                    <p>
+                      評価の特徴：
+                    </p>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li>累計2件以上の口コミ投稿者のみを分析対象</li>
+                      <li>4つの評価軸（料金、カリキュラム、講師の質、質問対応）で分析</li>
+                      <li>AIによる口コミの構造化分析（各項目の評価を1-5の5段階で判定）</li>
+                      <li>各評価軸の平均スコアから総合評価（A+、A、B、C）を算出</li>
+                    </ul>
+                    <p className="mt-4 text-sm text-slate-400">
+                      ※ 定期的な投稿者を対象とすることで、より信頼性の高い評価を提供します。
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <div className="bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8">
           <div className="overflow-x-auto">
@@ -103,11 +164,11 @@ export default function App() {
                     className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg cursor-pointer select-none hover:text-indigo-200 transition-colors min-w-[80px]"
                     onClick={() => setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"))}
                   >
-                    総合Rating
+                    総合評価
                     <span className="ml-2 text-sm">{sortOrder === "asc" ? "▲" : "▼"}</span>
                   </th>
-                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[80px]">提供形式</th>
-                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">住所</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">場所</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">提供形式</th>
                   <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">URL</th>
                   <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[80px]">詳細</th>
                 </tr>
@@ -115,7 +176,7 @@ export default function App() {
               <tbody className="space-y-2">
                 {sortedSchools.map((school, index) => (
                   <motion.tr
-                    key={school.id}
+                    key={index}
                     className="group hover:bg-indigo-900/30 transition-all duration-300 rounded-xl"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -130,13 +191,12 @@ export default function App() {
                       </div>
                     </td>
                     <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[80px]">
-                      <div className="flex items-center gap-1 sm:gap-2">
-                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
-                        <span className="text-lg sm:text-2xl font-bold text-yellow-400">{school.rating}</span>
-                      </div>
+                      <span className={`text-lg sm:text-2xl font-bold ${getRatingColor(school.rating)}`}>{school.rating}</span>
                     </td>
-                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[80px]">{school.format}</td>
-                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">{school.address}</td>
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">東京（池袋）</td>
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">
+                      <span className="px-2 py-1 bg-indigo-600/20 rounded-lg text-indigo-300">オンライン</span>
+                    </td>
                     <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">
                       <a
                         href={school.url}
@@ -189,9 +249,9 @@ export default function App() {
 
                 <div className="text-center mb-8">
                   <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 rounded-2xl mb-4">
-                    <Star className="w-12 h-12 text-yellow-400 fill-yellow-400" />
+                    <Star className={`w-12 h-12 ${getRatingColor(selected.rating)} fill-current`} />
                   </div>
-                  <div className="text-4xl font-bold mb-2 text-yellow-400">{selected.rating}</div>
+                  <div className={`text-4xl font-bold mb-2 ${getRatingColor(selected.rating)}`}>{selected.rating}</div>
                   <div className="text-2xl text-indigo-300 font-semibold">{selected.name}</div>
                 </div>
 
@@ -230,7 +290,25 @@ export default function App() {
                             className="overflow-hidden"
                           >
                             <div className="pt-2 text-slate-200 leading-relaxed">
-                              {selected && dummyReviewsData[selected.id] ? dummyReviewsData[selected.id][key] : "口コミはありません"}
+                              {selected.reviews[key].map((review, index) => (
+                                <p key={index} className="mb-2">{review}</p>
+                              ))}
+                              <div className="mt-4">
+                                <h4 className="text-sm font-semibold text-indigo-300 mb-2">参考URL:</h4>
+                                <div className="space-y-2">
+                                  {selected.referenceUrls[key].map((url, index) => (
+                                    <a
+                                      key={index}
+                                      href={url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="block text-sm text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors"
+                                    >
+                                      {url.replace('https://', '')}
+                                    </a>
+                                  ))}
+                                </div>
+                              </div>
                             </div>
                           </motion.div>
                         )}
@@ -243,6 +321,6 @@ export default function App() {
           )}
         </AnimatePresence>
       </div>
-    </div >
+    </div>
   );
 }
