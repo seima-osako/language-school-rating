@@ -193,9 +193,9 @@ export default function App() {
                     <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[80px]">
                       <span className={`text-lg sm:text-2xl font-bold ${getRatingColor(school.rating)}`}>{school.rating}</span>
                     </td>
-                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">東京（池袋）</td>
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">{school.address}</td>
                     <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">
-                      <span className="px-2 py-1 bg-indigo-600/20 rounded-lg text-indigo-300">オンライン</span>
+                      <span className="px-2 py-1 bg-indigo-600/20 rounded-lg text-indigo-300">{school.format}</span>
                     </td>
                     <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">
                       <a
@@ -263,7 +263,7 @@ export default function App() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-indigo-300 mb-4">口コミ・レビュー</h3>
+                  <h3 className="text-xl font-semibold text-indigo-300 mb-4">AI分析レポート</h3>
                   {(["price", "curriculum", "teacher", "support"] as const).map((key) => (
                     <div key={key} className="bg-slate-800/50 rounded-xl p-4">
                       <div className="flex justify-between items-center mb-3">

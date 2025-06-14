@@ -39,19 +39,19 @@ export const schoolsData: SchoolType[] = [
         id: "ielts-trainer-pro",
         name: "IELTS TRAINER PRO",
         rating: calculateRating({
-            price: 4.571429,
-            curriculum: 4.619048,
-            teacher: 4.590909,
-            support: 4.428571
+            price: 4.428571,
+            curriculum: 4.263158,
+            teacher: 4.071429,
+            support: 4.250000
         }),
         format: "対面",
-        address: "東京池袋",
+        address: "東京都豊島区",
         url: "https://maps.app.goo.gl/xJTevMaD3exVvn1P6",
         scores: {
-            price: 4.571429,
-            curriculum: 4.619048,
-            teacher: 4.590909,
-            support: 4.428571
+            price: 4.428571,
+            curriculum: 4.263158,
+            teacher: 4.071429,
+            support: 4.250000
         },
         reviews: {
             price: [
@@ -87,6 +87,119 @@ export const schoolsData: SchoolType[] = [
             support: [
                 "https://maps.app.goo.gl/NgGY8gqZA9SWcT1n6",
                 "https://maps.app.goo.gl/1iCBx1JLxAfGF1gp8"
+            ]
+        }
+    },
+    {
+        id: "liberty-english-academy",
+        name: "リバティイングリッシュアカデミー",
+        rating: calculateRating({
+            price: 2.272727,
+            curriculum: 4.615385,
+            teacher: 4.466667,
+            support: 4.038462
+        }),
+        format: "対面とオンライン",
+        address: "東京都港区",
+        url: "https://maps.app.goo.gl/7GkkvyrdYBQZAd8X8",
+        scores: {
+            price: 2.272727,
+            curriculum: 4.615385,
+            teacher: 4.466667,
+            support: 4.038462
+        },
+        reviews: {
+            price: [
+                "「受講料は高めでも一生使える英語力なら安い」「コスパが良い」と、投資価値を認める声が複数。特に長期的視点で費用対効果を感じている受講者が目立つ。",
+                "「授業料が高すぎて続けにくい」「価格に見合わない」といった不満も根強い。料金に見合った成果を実感できなかったケースでは後悔の声も。"
+            ],
+            curriculum: [
+                "独自メソッド「Grammar Table」を中心に、英文構造を論理的に学べる体系的プログラムが高評価。４技能を底上げできるとの声も多数。",
+                "「難度が高く基礎がないと厳しい」「Writing／Speaking パートの内容にムラがある」など、コース間の一貫性やレベル設計への指摘が散見。"
+            ],
+            teacher: [
+                "「丁寧で熱心」「弱点を的確にフォロー」と、藤川先生を筆頭に講師陣の指導力を高く評価する声が多数。スコアアップ実績にも直結。",
+                "「講師やスタッフ間で質にばらつき」「トップダウンで威圧的」といった相性・指導スタイルへの不満も一定数存在。"
+            ],
+            support: [
+                "「スタッフが親身で相談しやすい」「オンラインでもサポート体制が整っている」など、レスポンスの速さや丁寧さを評価する声がある。",
+                "「オンラインクラスのリマインド不足」「カスタマーサポートが不親切」「質問への回答が的外れ」といった対応品質への不満も報告。"
+            ]
+        },
+        referenceUrls: {
+            price: [
+                "https://maps.app.goo.gl/iXCm12LWGNW8noU17",
+                "https://maps.app.goo.gl/HxpSpdzecBioDnje9",
+                "https://maps.app.goo.gl/4NAwBVMvZ2Vt5DNh9"
+            ],
+            curriculum: [
+                "https://maps.app.goo.gl/3LUkBugqw5qabUXL8",
+                "https://maps.app.goo.gl/xW5pa7LVKqPE1rzo7",
+                "https://maps.app.goo.gl/3SSo7eEeXGB3XdBL7"
+            ],
+            teacher: [
+                "https://maps.app.goo.gl/rDkFFKfwoFGb6TLj7",
+                "https://maps.app.goo.gl/632h6bnfgbeTBHvg7",
+                "https://maps.app.goo.gl/85m8FDDHDR9QEayh9"
+            ],
+            support: [
+                "https://maps.app.goo.gl/FtMtXipR5ebwwwoEA",
+                "https://maps.app.goo.gl/9UpNd54say8oFYXB9",
+                "https://maps.app.goo.gl/WZWwZGWnNmRfr3KM7"
+            ]
+        }
+    },
+    {
+        id: "berkeley-house",
+        name: "バークレーハウス語学センター",
+        rating: calculateRating({
+            price: 1.333333,
+            curriculum: 3.714286,
+            teacher: 4.166667,
+            support: 3.500000
+        }),
+        format: "対面とオンライン",
+        address: "東京都千代田区",
+        url: "https://maps.app.goo.gl/bmb9NK7rQrNhJtVJ7",
+        scores: {
+            price: 1.333333,
+            curriculum: 3.714286,
+            teacher: 4.166667,
+            support: 3.500000
+        },
+        reviews: {
+            price: [
+                "「他のIELTS対策スクールより遥かに高額」「高い授業料を払っているのに」といった、料金設定が割高であるという意見や、費用対効果に疑問を持つ声が見られます。"
+            ],
+            curriculum: [
+                "IELTSやビジネス英会話など、個人の目的に合わせて「レッスン内容をカスタムしてもらえた」点や、それによって「スコアが1.0上がった」「商談がスムーズに進んだ」といった具体的な成果に繋がっている点が高く評価されています。",
+                "一方で、「受講後に成績が下がった」「通っているだけでは習得できそうにない」といった、効果を疑問視する声も存在します。"
+            ],
+            teacher: [
+                "「弱点を把握してしっかり対策してくれた」「講師がとても良い」と、指導力やレベルアップの実感を評価する声が多数あります。",
+                "ただし、「講師によって当たり外れがある」「文法を間違える講師がいた」など、講師の質にばらつきがある点を指摘する声も見られました。"
+            ],
+            support: [
+                "「カウンセリングで丁寧に悩みを聞いてもらえた」「スタッフはとても礼儀正しくて親切」など、受講生に寄り添う姿勢を評価する声があります。",
+                "一方で、「カウンセリングが雑」「不都合な口コミを削除するなど対応が不誠実」といった、サポート体制や学校側の姿勢に対する厳しい批判も報告されています。"
+            ]
+        },
+        referenceUrls: {
+            price: [
+                "https://maps.app.goo.gl/biKAVzdqMPWYxE6G7",
+                "https://maps.app.goo.gl/3rQcSJ6PYhAEWvfv7"
+            ],
+            curriculum: [
+                "https://maps.app.goo.gl/1X9mt9uNHzpVRVNe9",
+                "https://maps.app.goo.gl/7dZyCHJZVVoWz9QE8"
+            ],
+            teacher: [
+                "https://maps.app.goo.gl/RnW6kHWVD7j8eiEM6",
+                "https://maps.app.goo.gl/3rQcSJ6PYhAEWvfv7"
+            ],
+            support: [
+                "https://maps.app.goo.gl/hqKAumt1cvw1HzfX8",
+                "https://maps.app.goo.gl/biKAVzdqMPWYxE6G7"
             ]
         }
     }
