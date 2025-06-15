@@ -514,6 +514,113 @@ export const schoolsData: SchoolType[] = [
                 "https://maps.app.goo.gl/iSArrCpW1AEPBap58"
             ]
         }
+    },
+    {
+        id: "nichibei-shibuya",
+        name: "日米英語学院渋谷校",
+        rating: calculateRating({
+            price: 3.000000,
+            curriculum: 4.470588,
+            teacher: 4.600000,
+            support: 4.500000
+        }),
+        address: "東京都渋谷区",
+        url: "https://maps.app.goo.gl/zyCxADXUAiTxbqLw7",
+        scores: {
+            price: 3.000000,
+            curriculum: 4.470588,
+            teacher: 4.600000,
+            support: 4.500000
+        },
+        reviews: {
+            price: [
+                "今回の分析対象の口コミの中では、料金に関する直接的な言及は1件のみでした。その口コミでは「値段は安くないですが、通う価値がかなり高く値段以上の成果を得られます！」と述べられており、価格設定は高めであるものの、それに見合う、あるいはそれ以上の価値があると感じられているようです。",
+                "ただし、言及している口コミが1件のみであるため、料金に関する全体の傾向を判断するには情報が不十分です。"
+            ],
+            curriculum: [
+                "「英検でスコアが80点上がった」「半年でIELTSスピーキングのスコアが4.0から5.5になった」など、資格試験のスコアアップに直結する具体的な成果を評価する声が多数見られます。また、「目標に沿った最適なプラン」「一対一で弱点を重点的に勉強」といった、個人のレベルや目標に合わせた柔軟なカリキュラム設定も高く評価されています。",
+                "一方で、問い合わせ段階の口コミではありますが、「平日の日中のIELTS対策が少なかった」という、希望するコースの選択肢が少ないことへの不満の声も1件ありました。"
+            ],
+            teacher: [
+                "講師の質に関しては、肯定的な意見が大半を占めています。「先生のレベルがかなり高く資格対策知識が豊富」「説明もとても分かりやすく」といった指導力を評価する声や、「丁寧に明るく教えてくださり、楽しく通えています」「優しく教えてくれる」など、講師の人柄やコミュニケーションの取りやすさを高く評価する声が目立ちます。",
+                "日本人講師とネイティブ講師が在籍し、目的に応じて選択できる点も好評のようです。今回の分析対象の口コミの中では、講師の質に関する否定的な意見は見られませんでした。"
+            ],
+            support: [
+                "「分からないところや内容だけでなく勉強方法も教えてくださります」という、学習内容に留まらない手厚いサポートを評価する声がありました。また、講師だけでなくスタッフによるサポート体制も評価されており、「定期的にフォローアップをしてくれモチベーションがかなり上がる」「スタッフの方々も試験の結果や、普段の様子をみてくださり、そこからアドバイスをしてくださります」といった口コミから、生徒一人ひとりへの手厚いケアが伺えます。",
+                "一方で、入塾しなかった方からは「営業電話が度々かかってきます」という、問い合わせ後の対応に関する否定的な意見もありました。"
+            ]
+        },
+        referenceUrls: {
+            price: [
+                "https://maps.app.goo.gl/ZCuJ9UrSoWdfoKHJ7"
+            ],
+            curriculum: [
+                "https://maps.app.goo.gl/pCdLjwPbP1BWAmiv5",
+                "https://maps.app.goo.gl/mw8XG2oW6RtP6DvJ8"
+            ],
+            teacher: [
+                "https://maps.app.goo.gl/ZCuJ9UrSoWdfoKHJ7",
+                "https://maps.app.goo.gl/gPuzgMJZSvJ8L2vv5"
+            ],
+            support: [
+                "https://maps.app.goo.gl/pCdLjwPbP1BWAmiv5",
+                "https://maps.app.goo.gl/CK1658w9pkjQ2ZVH7"
+            ]
+        }
+    },
+    {
+        id: "nichibei-umeda",
+        name: "日米英語学院梅田校",
+        rating: calculateRating({
+            price: 2.000000,
+            curriculum: 4.166667,
+            teacher: 4.833333,
+            support: 4.333333
+        }),
+        address: "大阪府大阪市北区",
+        url: "https://maps.app.goo.gl/BaBkQspkqZeEciss7",
+        scores: {
+            price: 2.000000,
+            curriculum: 4.166667,
+            teacher: 4.833333,
+            support: 4.333333
+        },
+        reviews: {
+            price: [
+                "料金に関しては3件の言及があり、「高い」という印象が共通しています。特に、1年間通っても成果が出なかった口コミでは、「高い授業料払ったのに、最悪です」とコストに見合わない点への強い不満が見られました。",
+                "一方で、「料金は高め」としながらも、「自習室や単語テスト、英文添削が料金に含まれて」いる点を評価し、コストパフォーマンスに納得している意見もありました。"
+            ],
+            curriculum: [
+                "「3ヶ月でTOEICのスコアも150点以上アップ」「英検1級に合格することができました」など、具体的な成果に繋がったという肯定的な評価が多数を占めています。「単語テストやライティングを自分のペースでできる」といった、学習の柔軟性を評価する声もありました。",
+                "しかし、1件の口コミでは「TOEFLの点数上げる為に1年通いましたが思ったより上がりませんでした」と、効果を明確に否定する意見も見られました。"
+            ],
+            teacher: [
+                "講師の質に関する口コミは非常に肯定的です。「先生方の質が高く」「教え方も丁寧で分かりやすい」といった指導力を高く評価する声や、「優しい先生が優しく教えてくださいます」「ネイティブの先生とレッスンができて楽しいです」のように、講師の人柄やコミュニケーションの取りやすさを評価する声が目立ちます。",
+                "今回の分析では、講師の質に関する否定的な意見は見られませんでした。"
+            ],
+            support: [
+                "「スタッフの方のサポートもきめ細かい」「英文添削が料金に含まれており、十二分に活用しています」など、サポート体制を評価する声が見られます。また、「優しい先生が優しく教えてくださいます」という口コミからは、質問しやすい雰囲気が伺えます。",
+                "ただし、質問対応に直接言及した口コミは多くないため、全体の傾向を判断するには、より多くの情報が必要です。"
+            ]
+        },
+        referenceUrls: {
+            price: [
+                "https://maps.app.goo.gl/4YXwXoypFJjogsXx6",
+                "https://maps.app.goo.gl/THQNidyVfNHLgqQr6"
+            ],
+            curriculum: [
+                "https://maps.app.goo.gl/THQNidyVfNHLgqQr6",
+                "https://maps.app.goo.gl/4YXwXoypFJjogsXx6"
+            ],
+            teacher: [
+                "https://maps.app.goo.gl/aWMyPwDGdMJuhLCR9",
+                "https://maps.app.goo.gl/X44iLrrMNo6vBubk8"
+            ],
+            support: [
+                "https://maps.app.goo.gl/aWMyPwDGdMJuhLCR9",
+                "https://maps.app.goo.gl/THQNidyVfNHLgqQr6"
+            ]
+        }
     }
 ];
 

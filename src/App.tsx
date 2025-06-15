@@ -145,7 +145,7 @@ export default function App() {
                       評価の特徴：
                     </p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li>累計2件以上※ の口コミ投稿者のみを分析対象</li>
+                      <li>累計2件以上※ の口コミ投稿者のみを抽出</li>
                       <li>AIによる口コミ分析（料金、カリキュラム、講師の質、質問対応の各項目を1-5の5段階で判定）</li>
                       <li>各評価軸の平均スコアから総合評価（A+、A、B、C）を算出</li>
                     </ul>
@@ -222,6 +222,27 @@ export default function App() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* お知らせセクション */}
+        <div className="mt-16 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-lg">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">📚 総合分析レポート公開中！</h2>
+            <p className="text-gray-700 mb-6">
+              各スクールの詳細な分析レポートをnoteで公開しています。
+            </p>
+            <a
+              href="https://note.com/sako_egs/n/nc0bd09d291df"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              <span>総合分析レポートを読む</span>
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
           </div>
         </div>
 
