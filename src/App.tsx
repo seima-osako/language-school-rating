@@ -89,6 +89,12 @@ export default function App() {
   const sortedSchools = [...schoolsData].sort((a, b) => {
     const aScore = ratingToScore(a.rating);
     const bScore = ratingToScore(b.rating);
+    if (aScore === bScore) {
+      // 同じ評価の場合は平均点で比較
+      const aAvg = (a.scores.price + a.scores.curriculum + a.scores.teacher + a.scores.support) / 4;
+      const bAvg = (b.scores.price + b.scores.curriculum + b.scores.teacher + b.scores.support) / 4;
+      return sortOrder === "asc" ? aAvg - bAvg : bAvg - aAvg;
+    }
     return sortOrder === "asc" ? aScore - bScore : bScore - aScore;
   });
 
