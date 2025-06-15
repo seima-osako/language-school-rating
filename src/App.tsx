@@ -145,9 +145,8 @@ export default function App() {
                       評価の特徴：
                     </p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li>累計2件以上の口コミ投稿者のみを分析対象</li>
-                      <li>4つの評価軸（料金、カリキュラム、講師の質、質問対応）で分析</li>
-                      <li>AIによる口コミの構造化分析（各項目の評価を1-5の5段階で判定）</li>
+                      <li>累計2件以上※ の口コミ投稿者のみを分析対象</li>
+                      <li>AIによる口コミ分析（料金、カリキュラム、講師の質、質問対応の各項目を1-5の5段階で判定）</li>
                       <li>各評価軸の平均スコアから総合評価（A+、A、B、C）を算出</li>
                     </ul>
                     <p className="mt-4 text-sm text-slate-400">
@@ -173,10 +172,9 @@ export default function App() {
                     総合評価
                     <span className="ml-2 text-sm">{sortOrder === "asc" ? "▲" : "▼"}</span>
                   </th>
-                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">場所</th>
-                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">提供形式</th>
-                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">URL</th>
                   <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[80px]">詳細</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">場所</th>
+                  <th className="pb-2 sm:pb-4 text-indigo-300 font-semibold text-xs sm:text-lg min-w-[120px]">URL</th>
                 </tr>
               </thead>
               <tbody className="space-y-2">
@@ -199,10 +197,17 @@ export default function App() {
                     <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[80px]">
                       <span className={`text-lg sm:text-2xl font-bold ${getRatingColor(school.rating)}`}>{school.rating}</span>
                     </td>
-                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">{school.address}</td>
-                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">
-                      <span className="px-2 py-1 bg-indigo-600/20 rounded-lg text-indigo-300">{school.format}</span>
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[80px]">
+                      <motion.button
+                        className="px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                        onClick={() => setSelected(school)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        レーティングを見る
+                      </motion.button>
                     </td>
+                    <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">{school.address}</td>
                     <td className="py-2 sm:py-6 pr-2 sm:pr-6 text-xs sm:text-base min-w-[120px]">
                       <a
                         href={school.url}
@@ -212,16 +217,6 @@ export default function App() {
                       >
                         {school.url.replace('https://', '')}
                       </a>
-                    </td>
-                    <td className="py-2 sm:py-6 text-xs sm:text-base min-w-[80px]">
-                      <motion.button
-                        className="px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                        onClick={() => setSelected(school)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        レーティングを見る
-                      </motion.button>
                     </td>
                   </motion.tr>
                 ))}
